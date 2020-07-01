@@ -1,0 +1,18 @@
+For automatic oniom optimizations
+
+1) In order to have same MMPol/MM parameters for each frames, it is necessary to have for each frame the same residues and the same number of solvent. Note that, you can use closest to keep the closest "solvent" which can be any of your choice. By default, If you have water and Na+, cpptraj will keep only water. In this example Na+ is discarded.
+
+ptraj_closest.in --> it extracts from the trajectories many mol2 files with first monomer and the closest 390 water molecules to the chromophore
+
+2) Unfortunately cpptraj rinominate the mol2 files just created in a funny way...
+
+modify_name.sh --> It modify the mol2 files names to closestN.mol2, where N is the frame
+
+3)One of the mol2 must be modified in order to be compatible with oniom (es. LEU->CLEU, SER->NSER)
+
+4)3prepare_oniom.sh --> it writes the oniom input (senza no clean) for the mol2 just modified at 3)
+
+5)4prepare_oniom.sh --> it writes the oniom inputs for the other mol2 (in modalità no clean, ma modifica l'input in modo che i parametri siano quelli creati da 3prepare_oniom.sh)
+
+
+
